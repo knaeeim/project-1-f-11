@@ -1,6 +1,7 @@
 import React from 'react';
+import { GiCrossedSabres } from 'react-icons/gi';
 
-const CartProduct = ({ cart }) => {
+const CartProduct = ({ cart, handleRemoveFromCart }) => {
     const { name, image, price, cart_quantity } = cart;
     return (
         <div className='flex gap-5 justify-between my-8'>
@@ -14,12 +15,14 @@ const CartProduct = ({ cart }) => {
             </div>
 
             {/* image */}
-            <div className='w-16 h-16 rounded-xl'>
-                <img className='h-full rounded-xl' src={image} alt="" />
+            <div className='flex gap-4'>
+                <div className='w-16 h-16 rounded-xl'>
+                    <img className='h-full rounded-xl' src={image} alt="" />
+                </div>
+                <div>
+                    <button onClick={()=> handleRemoveFromCart(cart)}> <GiCrossedSabres size={25} /> </button>
+                </div>
             </div>
-            {/* <div className='flex items-center'>
-                <button onClick={() => removeProducts(cartP)}><RxCross1 className='text-red-700 font-bold' size={35} /></button>
-            </div> */}
         </div>
     );
 };

@@ -1,4 +1,6 @@
 import React from 'react';
+import { FaCartPlus } from 'react-icons/fa';
+import { IoBagAddSharp } from 'react-icons/io5';
 
 const Product = ({ product, handleUpdateCart }) => {
     const { name, image, price, category, rating, description } = product;
@@ -23,8 +25,8 @@ const Product = ({ product, handleUpdateCart }) => {
                         <div className="badge badge-outline">{rating}</div>
                     </div>
                     <div className='flex gap-5 mt-5'>
-                        <button onClick={() => handleUpdateCart(product)} className='btn btn-outline btn-secondary w-[50%]'>Add to Cart</button>
-                        <button className='btn btn-outline btn-primary w-[50%]'>Buy Now</button>
+                        <button onClick={() => handleUpdateCart(product)} className='btn btn-outline btn-secondary w-[50%]'> <FaCartPlus className='text-green-800'/> Add to Cart</button>
+                        <button className='btn btn-outline btn-primary w-[50%]'> <IoBagAddSharp /> Buy Now</button>
                     </div>
                 </div>
             </div>

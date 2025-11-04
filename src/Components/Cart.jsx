@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CartProduct from './CartProduct';
 
-const Cart = ({ carts }) => {
+const Cart = ({ carts, handleRemoveFromCart }) => {
 
     const [totalPrice, setTotalPrice] = useState(0);
     
@@ -19,7 +19,15 @@ const Cart = ({ carts }) => {
             <hr />
             <div>
                 {
-                    carts.map((cart) => <CartProduct key={cart.id} cart={cart}></CartProduct>)
+                    carts.length > 0 ? <>
+                        {
+                            carts.map((cart) => <CartProduct handleRemoveFromCart={handleRemoveFromCart} key={cart.id} cart={cart}></CartProduct>)
+                        }
+                    </> : <>
+                        <div className='flex justify-center items-center h-52'>
+                            <h1 className='text-4xl text-red-800'>There are no products in the cart</h1>
+                        </div>
+                    </>
                 }
                 <hr />
                 <div className='flex justify-between mt-5'>
