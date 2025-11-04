@@ -8,7 +8,19 @@ function App() {
   const [carts, setCarts] = useState([])
 
   const handleUpdateCart = (product) => {
-      setCarts((prev)=> [...prev, product])
+      setCarts((prev)=> {
+        const exists = prev.some((p) => p.id === product.id); 
+
+        if(exists){
+          // object er moddho theke cartQunatity ber kore update kore dibo
+          return prev.map((elem) => elem.id === product.id ? {...elem, cart_quantity: elem.cart_quantity + 1 } : elem)
+        }
+        else{
+          // notun je object asbe take array er moddhe rekhe dibo
+          return [...prev, {...product, cart_quantity : 1}]
+        }
+
+      })
   }
 
   console.log(carts);
